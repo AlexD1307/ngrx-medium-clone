@@ -1,4 +1,8 @@
 <app-loading *ngIf="isLoading$ | async"></app-loading>
+<app-backend-error-messages
+    [backendErrors]="backendErrors$ | async"
+    *ngIf="backendErrors$ | async"
+></app-backend-error-messages>
 <app-article-form
   *ngIf="initialValues$ | async"
   [initialValues]="initialValues$ | async"

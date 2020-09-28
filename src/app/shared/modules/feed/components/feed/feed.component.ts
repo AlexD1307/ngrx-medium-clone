@@ -6,7 +6,6 @@ import { GetFeedResponseInterface } from '../../types/get-feed-response.interfac
 import { errorSelector, feedSelector, isLoadingSelector } from '../../store/selectors'
 import { environment } from 'src/environments/environment'
 import { ActivatedRoute, Params, Router } from '@angular/router'
-import {parseUrl, stringify} from 'query-string'
 
 @Component({
   selector: 'app-feed',
@@ -57,16 +56,6 @@ export class FeedComponent implements OnInit, OnChanges {
 
   private fetchFeed(): void {
     const offset = this.currentPage * this.limit - this.limit
-    const parsedUrl = parseUrl(this.apiUrlProps)
-
-    // refactor to pure angular params
-    const stringifiedParams = stringify({
-      limit: this.limit,
-      offset,
-      ...parsedUrl.query
-    })
-    const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`
-
-    this.store.dispatch(getFeedAction({url: apiUrlWithParams}))
+    this.store.dispatch(getFeedAction({url: this.apiUrlProps, limit: this.limit, offset}))
   }
 }

@@ -14,6 +14,8 @@ import {PersistenceService} from 'src/app/shared/services/persistence.service'
 import {LoginEffect} from 'src/app/auth/store/effects/login.effect'
 import {LoginComponent} from 'src/app/auth/components/login/login.component'
 import {GetCurrentUserEffect} from 'src/app/auth/store/effects/get-current-user.effect'
+import { UpdateCurrentUserEffect } from './store/effects/update-current-user.effect'
+import { LogoutEffect } from './store/effects/logout.effect'
 
 const routes = [
   {
@@ -35,7 +37,9 @@ const routes = [
     EffectsModule.forFeature([
       RegisterEffect,
       LoginEffect,
-      GetCurrentUserEffect
+      GetCurrentUserEffect,
+      UpdateCurrentUserEffect,
+      LogoutEffect
     ]),
     BackendErrorMessagesModule
   ],

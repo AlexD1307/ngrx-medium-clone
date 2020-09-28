@@ -9,7 +9,7 @@ import { isLoggedInSelector } from 'src/app/auth/store/selectors'
 })
 export class FeedTogglerComponent implements OnInit {
   @Input('tagName') tagNameProps: string | null
-  isLoggedIn$: Observable<boolean>
+  isLoggedIn$: Observable<boolean | null>
   constructor(private store: Store) { }
 
   ngOnInit(): void {

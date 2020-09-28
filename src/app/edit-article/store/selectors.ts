@@ -24,6 +24,5 @@ export const isSubmittingSelector = createSelector(
 
 export const validationErrorsSelector = createSelector(
   editArticleFeatureSelector,
-  (editArticleState: EditArticleStateInterface) =>
-    editArticleState.validationErrors
+  (editArticleState: EditArticleStateInterface) => editArticleState.validationErrors
 )

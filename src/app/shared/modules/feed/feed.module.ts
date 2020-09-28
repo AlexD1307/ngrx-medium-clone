@@ -11,6 +11,7 @@ import { ErrorMessageModule } from '../error-message/error-message.module'
 import { LoadingModule } from '../loading/loading.module'
 import { PaginationModule } from '../pagination/pagination.module'
 import { TagListModule } from '../tag-list/tag-list.module'
+import { AddToFavoritesModule } from '../add-to-favorites/add-to-favorites.module'
 
 @NgModule({
   declarations: [FeedComponent],
@@ -22,7 +23,8 @@ import { TagListModule } from '../tag-list/tag-list.module'
     ErrorMessageModule,
     LoadingModule,
     PaginationModule,
-    TagListModule
+    TagListModule,
+    AddToFavoritesModule
   ],
   providers: [FeedService],
   exports: [FeedComponent]

@@ -11,6 +11,7 @@ import {GetArticleEffect} from './store/effects/get-article.effect'
 import {EditArticleService} from 'src/app/edit-article/services/edit-article.service'
 import {ArticleService as SharedArticleService} from 'src/app/shared/services/article.service'
 import {LoadingModule} from '../shared/modules/loading/loading.module'
+import { BackendErrorMessagesModule } from '../shared/modules/backend-error-messages/backend-error-messages.module'
 
 const routes = [
   {
@@ -26,7 +27,8 @@ const routes = [
     ArticleFormModule,
     EffectsModule.forFeature([UpdateArticleEffect, GetArticleEffect]),
     StoreModule.forFeature('editArticle', reducers),
-    LoadingModule
+    LoadingModule,
+    BackendErrorMessagesModule
   ],
   declarations: [EditArticleComponent],
   providers: [EditArticleService, SharedArticleService]

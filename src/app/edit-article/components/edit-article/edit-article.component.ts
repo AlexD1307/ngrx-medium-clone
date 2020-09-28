@@ -37,7 +37,8 @@ export class EditArticleComponent implements OnInit {
     this.slug = this.route.snapshot.paramMap.get('slug')
     this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector))
     this.isLoading$ = this.store.pipe(select(isLoadingSelector))
-    this.backendErrors$ = this.store.pipe(select(validationErrorsSelector))
+    // this.backendErrors$ = this.store.pipe(select(validationErrorsSelector))
+    this.store.pipe(select(validationErrorsSelector)).subscribe(a => console.log(a))
     this.initialValues$ = this.store.pipe(
       select(articleSelector),
       filter(Boolean),

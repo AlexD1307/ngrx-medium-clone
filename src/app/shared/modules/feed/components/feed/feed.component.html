@@ -1,10 +1,13 @@
 <app-loading *ngIf="isLoading$ | async"></app-loading>
 <app-error-message *ngIf="error$ | async"></app-error-message>
 <div *ngIf="feed$ | async">
+  <span *ngIf="!(feed$ | async).articlesCount">
+    No articles are here... yet.
+  </span>
   <div class="article-preview" *ngFor="let article of (feed$ | async).articles">
     <div class="article-meta">
       <a [routerLink]="['/profiles', article.author.username]">
-        <img [src]="article.author.image" />
+        <img [src]="article.author.image" alt="" />
       </a>
       <div class="info">
         <a [routerLink]="['/profiles', article.author.username]">
@@ -13,7 +16,11 @@
         <span class="date">{{article.createdAt}}</span>
       </div>
       <div class="pull-xs-right">
-        ADD Favourites
+        <app-add-to-favorites
+            [favoritesCount]="article.favoritesCount"
+            [isFavorited]="article.favorited"
+            [articleSlug]="article.slug"
+        ></app-add-to-favorites>
       </div>
       <a [routerLink]="['/articles', article.slug]" class="preview-link">
         <h1>{{article.title}}</h1>

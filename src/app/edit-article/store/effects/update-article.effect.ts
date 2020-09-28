@@ -15,6 +15,12 @@ import {
 
 @Injectable()
 export class UpdateArticleEffect {
+  constructor(
+    private actions$: Actions,
+    private editArticleService: EditArticleService,
+    private router: Router
+  ) {}
+
   updateArticle$ = createEffect(() =>
     this.actions$.pipe(
       ofType(updateArticleAction),
@@ -23,11 +29,8 @@ export class UpdateArticleEffect {
           map((article: ArticleInterface) => {
             return updateArticleSuccessAction({article})
           }),
-
           catchError((errorResponse: HttpErrorResponse) => {
-            return of(
-              updateArticleFailureAction({errors: errorResponse.error.errors})
-            )
+            return of(updateArticleFailureAction({errors: errorResponse.error.errors}))
           })
         )
       })
@@ -44,10 +47,4 @@ export class UpdateArticleEffect {
       ),
     {dispatch: false}
   )
-
-  constructor(
-    private actions$: Actions,
-    private editArticleService: EditArticleService,
-    private router: Router
-  ) {}
 }
